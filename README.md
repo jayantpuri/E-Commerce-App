@@ -1,6 +1,5 @@
-## E-Commerce App
+# E-Commerce App
 
-# The App
 
 # Functionalities
 
