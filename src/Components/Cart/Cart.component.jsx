@@ -8,24 +8,30 @@ import "./cart-item.styles.scss";
 
 const Cart = () => {
   const { cartItems } = useContext(cartContext);
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
   const handleClick = () => {
     navigate("/checkout");
   };
   return (
     <div className="cart-dropdown-container">
       <div className="cart-items">
-        {cartItems.map((item) => (
-          <div className="cart-item-container" key={item.id}>
-            <img src={item.imageUrl} alt={`${item.name}`} />
-            <div className="item-details">
-              <span>{item.name}</span>
-              <span>
-                {item.qty} x {item.price}
-              </span>
+        {cartItems.length === 0 ? (
+          <span className="empty-cart">
+            The items you will add to your cart will be displayed here.
+          </span>
+        ) : (
+          cartItems.map((item) => (
+            <div className="cart-item-container" key={item.id}>
+              <img src={item.imageUrl} alt={`${item.name}`} />
+              <div className="item-details">
+                <span>{item.name}</span>
+                <span>
+                  {item.qty} x {item.price}
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
       <Button onClick={handleClick} buttonType={button_Type_Class.blackButton}>
         Go to checkout
